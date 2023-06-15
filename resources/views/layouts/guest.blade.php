@@ -8,128 +8,141 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&amp;display=swap"
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Marck+Script"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/animate.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/aos.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/jquery.timepicker.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/flaticon.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/icomoon.css">
-    <link rel="stylesheet" href="{{ asset('assets/guest') }}/css/style.css">
-    <script nonce="8b3bbed3-f334-4250-bd33-5b7d0d04a5ae">
-        (function(w, d) {
-            ! function(a, b, c, d) {
-                a[c] = a[c] || {};
-                a[c].executed = [];
-                a.zaraz = {
-                    deferred: [],
-                    listeners: []
-                };
-                a.zaraz.q = [];
-                a.zaraz._f = function(e) {
-                    return function() {
-                        var f = Array.prototype.slice.call(arguments);
-                        a.zaraz.q.push({
-                            m: e,
-                            a: f
-                        })
-                    }
-                };
-                for (const g of ["track", "set", "debug"]) a.zaraz[g] = a.zaraz._f(g);
-                a.zaraz.init = () => {
-                    var h = b.getElementsByTagName(d)[0],
-                        i = b.createElement(d),
-                        j = b.getElementsByTagName("title")[0];
-                    j && (a[c].t = b.getElementsByTagName("title")[0].text);
-                    a[c].x = Math.random();
-                    a[c].w = a.screen.width;
-                    a[c].h = a.screen.height;
-                    a[c].j = a.innerHeight;
-                    a[c].e = a.innerWidth;
-                    a[c].l = a.location.href;
-                    a[c].r = b.referrer;
-                    a[c].k = a.screen.colorDepth;
-                    a[c].n = b.characterSet;
-                    a[c].o = (new Date).getTimezoneOffset();
-                    if (a.dataLayer)
-                        for (const n of Object.entries(Object.entries(dataLayer).reduce(((o, p) => ({
-                                ...o[1],
-                                ...p[1]
-                            })), {}))) zaraz.set(n[0], n[1], {
-                            scope: "page"
-                        });
-                    a[c].q = [];
-                    for (; a.zaraz.q.length;) {
-                        const q = a.zaraz.q.shift();
-                        a[c].q.push(q)
-                    }
-                    i.defer = !0;
-                    for (const r of [localStorage, sessionStorage]) Object.keys(r || {}).filter((t => t.startsWith(
-                        "_zaraz_"))).forEach((s => {
-                        try {
-                            a[c]["z_" + s.slice(7)] = JSON.parse(r.getItem(s))
-                        } catch {
-                            a[c]["z_" + s.slice(7)] = r.getItem(s)
-                        }
-                    }));
-                    i.referrerPolicy = "origin";
-                    i.src = "../../cdn-cgi/zaraz/sd0d9.js?z=" + btoa(encodeURIComponent(JSON.stringify(a[c])));
-                    h.parentNode.insertBefore(i, h)
-                };
-                ["complete", "interactive"].includes(b.readyState) ? zaraz.init() : a.addEventListener(
-                    "DOMContentLoaded", zaraz.init)
-            }(w, d, "zarazData", "script");
-        })(window, document);
-    </script>
+    <!-- Bootstrap -->
+    <link href="{{ asset('guest') }}/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font-Awesome -->
+    <link href="{{ asset('guest') }}/assets/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Flat icon -->
+    <link href="{{ asset('guest') }}/assets/flaticon/flaticon.css" rel="stylesheet">
+
+    <!-- Swiper -->
+    <link href="{{ asset('guest') }}/assets/css/swiper.min.css" rel="stylesheet">
+
+    <!-- Lightcase -->
+    <link href="{{ asset('guest') }}/assets/css/lightcase.css" rel="stylesheet">
+
+    <!-- quick-view -->
+    <link href="{{ asset('guest') }}/assets/css/quick-view.css" rel="stylesheet">
+
+    <!-- nstSlider -->
+    <link href="{{ asset('guest') }}/assets/css/jquery.nstSlider.css" rel="stylesheet">
+
+    <!-- flexslider -->
+    <link href="{{ asset('guest') }}/assets/css/flexslider.css" rel="stylesheet">
+
+    <!-- banner-bg -->
+    <link href="{{ asset('guest') }}/assets/css/banner-bg.css" rel="stylesheet">
+
+    <!-- Style -->
+    <link href="{{ asset('guest') }}/assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('guest') }}/assets/css/header.css" rel="stylesheet">
+
+    <!-- Responsive -->
+    <link href="{{ asset('guest') }}/assets/css/responsive.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Marck+Script', serif;
+        font-size: 15px;
+      }
+    </style>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/js/app.js')
 </head>
 
-<body class="font-sans text-gray-900 antialiased">
-    {{ $slot }}
+<body>
+    <div class="box-layout">
+        {{ $slot }}
+    </div>
 
     {{-- Scripts --}}
-    <script src="{{ asset('assets') }}/guest/js/jquery.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/popper.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/bootstrap.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/jquery.easing.1.3.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/jquery.waypoints.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/jquery.stellar.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/owl.carousel.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/aos.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/jquery.animateNumber.min.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false">
+
+    <!-- jQuery -->
+    <script src="{{ asset('guest') }}/assets/js/jquery-3.1.1.min.js"></script>
+    <script src="{{ asset('guest') }}/assets/js/jquery-migrate-1.4.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('guest') }}/assets/js/bootstrap.min.js"></script>
+
+    <!-- Coundown -->
+    <script src="{{ asset('guest') }}/assets/js/jquery.countdown.min.js"></script>
+
+    <!--Swiper-->
+    <script src="{{ asset('guest') }}/assets/js/swiper.jquery.min.js"></script>
+
+    <!--Masonry-->
+    <script src="{{ asset('guest') }}/assets/js/masonry.pkgd.min.js"></script>
+
+    <!--Lightcase-->
+    <script src="{{ asset('guest') }}/assets/js/lightcase.js"></script>
+
+    <!--modernizr-->
+    <script src="{{ asset('guest') }}/assets/js/modernizr.js"></script>
+
+    <!--velocity-->
+    <script src="{{ asset('guest') }}/assets/js/velocity.min.js"></script>
+
+    <!--quick-view-->
+    <script src="{{ asset('guest') }}/assets/js/quick-view.js"></script>
+
+    <!--nstSlider-->
+    <script src="{{ asset('guest') }}/assets/js/jquery.nstSlider.js"></script>
+    <script src="{{ asset('guest') }}/assets/js/nstfunctions.js"></script>
+
+    <!--flexslider-->
+    <script src="{{ asset('guest') }}/assets/js/flexslider-min.js"></script>
+    <script src="{{ asset('guest') }}/assets/js/flexfunctions.js"></script>
+
+    <!--directional-->
+    <script src="{{ asset('guest') }}/assets/js/directional-hover.js"></script>
+
+    <!--easing-->
+    <script src="{{ asset('guest') }}/assets/js/jquery.easing.min.js"></script>
+    <!-- parallax.js -->
+    <script src="{{ asset('guest') }}/assets/js/parallax.js"></script>
+    <script src="{{ asset('guest') }}/assets/js/theia-sticky-sidebar.js"></script>
+
+    <!-- Google Map -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAQlXnmyNPAeN3c3HNyWoUMqDk6bDF31Cg">
     </script>
-    <script src="{{ asset('assets') }}/guest/js/google-map.js"></script>
-    <script src="{{ asset('assets') }}/guest/js/main.js"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    <!-- Custom -->
+    <script src="{{ asset('guest') }}/assets/js/custom.js"></script>
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    <script type="text/javascript">
+        //Home Page map
+        var styleArray = [{
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#65ac4c"
+            }]
+        }];
 
-        gtag('config', 'UA-23581568-13');
+        var mapOptions = {
+            center: new google.maps.LatLng(55.864237, -4.251806),
+            zoom: 09,
+            styles: styleArray,
+            scrollwheel: false,
+            backgroundColor: 'transparent',
+            mapTypeControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("home-map"),
+            mapOptions);
+        var myLatlng = new google.maps.LatLng(55.864237, -4.251806);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            icon: 'images/map-icon.png'
+        });
     </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
-        integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7cdf6886cb540a47","version":"2023.4.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}'
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
